@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  GMWaterCamera
+
+  Created by liujiang on 2023/1/6.
+  Copyright © 2023 GreenTree Inn. All rights reserved.
+*/
+//"CFBundleDisplayName" ="Kosmos&#x2007;Camera";
+"CFBundleDisplayName" ="KM&#x2007;Camera";

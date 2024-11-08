@@ -1,0 +1,6 @@
+framework module LLWaterCameraKit {
+  umbrella header "LLWaterCameraKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

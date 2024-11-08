@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'LLWaterCameraKit_Example' do
+  pod 'LLWaterCameraKit', :path => '../'
+
+  target 'LLWaterCameraKit_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
