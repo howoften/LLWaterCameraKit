@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '10.0'
 
   s.requires_arc = true  # 是否是 arc 环境
-  #s.source_files = 'LLWaterCameraKit/Classes/LLWaterCameraKit.framework/Headers/*.{h}'  # 因为是使用 .framework 所以只暴露头文件
+  # s.source_files = 'LLWaterCameraKit/Classes/LLWaterCameraKit.framework/Headers/*.{h}'  # 因为是使用 .framework 所以只暴露头文件
   s.vendored_frameworks = ['LLWaterCameraKit/Classes/LLWaterCameraKit.framework'] #  .framework 资源路径
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
@@ -40,7 +40,7 @@ TODO: Add long description of the pod here.
   # s.resource_bundles = {  # 图片资源
   #   'XXXXX' => ['XXXXX/Assets/*.png']
   # }
-  s.public_header_files = 'LLWaterCameraKit/Classes/LLWaterCameraKit.framework/Headers/*.{h}'  # framework 暴露的头文件
+  # s.public_header_files = 'LLWaterCameraKit/Classes/LLWaterCameraKit.framework/Headers/*.{h}'  # framework 暴露的头文件
   s.frameworks = 'Foundation', 'CoreFoundation', 'UIKit'  # 依赖的 frameworks
 
 end

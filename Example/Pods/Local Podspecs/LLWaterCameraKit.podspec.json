@@ -33,7 +33,6 @@
   "user_target_xcconfig": {
     "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
   },
-  "public_header_files": "LLWaterCameraKit/Classes/LLWaterCameraKit.framework/Headers/*.{h}",
   "frameworks": [
     "Foundation",
     "CoreFoundation",
