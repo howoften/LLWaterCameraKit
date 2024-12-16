@@ -66,6 +66,8 @@ FOUNDATION_EXTERN_INLINE id callFunc(id receiver, NSString *aSelectorName, NSArr
 + (NSData *)decompressWeatherResponseData:(NSData *)responseData;
 + (NSString *)sortedKeysAndAddPercentEncoding:(NSDictionary *)params;
 + (BOOL)locationServiceAvailable;
++ (NSTimeZone *)timeZoneForCountryName:(NSString *)country;
+
 @end
 
 @interface UIImage (KMCameraBundle)

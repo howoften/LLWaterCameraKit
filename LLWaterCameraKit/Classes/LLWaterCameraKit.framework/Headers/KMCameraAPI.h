@@ -7,12 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <HXPhotoPicker/HXPhotoPicker.h>
 @protocol FastttCameraDelegate;
 @class KMDeviceOrientationMonitor;
 #if __has_include(<HXPhotoPicker/HXPhotoPicker.h>)
 #import <HXPhotoPicker/HXPhotoPicker.h>
 #endif
+
+#define KMDispatchMainAsyncSafe(block) \
+    do { \
+        if ([NSThread isMainThread]) { \
+            block(); \
+        } else { \
+            dispatch_async(dispatch_get_main_queue(), block); \
+        } \
+    } while (0)
+
+#define KMDispatchMainSyncSafe(block) \
+    do { \
+        if ([NSThread isMainThread]) { \
+            block(); \
+        } else { \
+            dispatch_sync(dispatch_get_main_queue(), block); \
+        } \
+    } while (0)
+
 typedef NS_ENUM(NSInteger, KMDeviceOrientation) {
     KMDeviceOrientationUnkown = 0,
     KMDeviceOrientationPortrait,
@@ -83,6 +101,7 @@ extern NSString *const KMStringInitialValue;
 @property (nonatomic, assign)BOOL lockOrientation;
 @property (nonatomic, assign)BOOL presentPhotoEditAfterTakingPhoto;
 @property (nonatomic, assign)BOOL dismissAfterTakingPhoto;
+@property (nonatomic, assign)BOOL waitUntilWatermarkElementApply;//阻塞拍摄直到水印合成结束才进行下一次合成
 @property (nonatomic, strong)UIColor *themeColor;
 @property (nonatomic, strong)NSString *albumName; //照片或视频要保存到的相册名称
 @property (nonatomic, assign, readonly)KMDeviceOrientation currentOrientation;
@@ -130,7 +149,7 @@ extern NSString *const KMStringInitialValue;
 + (void)removeRotatableSubviewsFromArray:(NSArray <UIView *> *)subviewsToRemove;
 
 
-+ (void)takePhotoCompletion:(void(^)(UIImage *originalImage, UIImage * watermarkImage))completion;
++ (void)takePhotoBeforeAddWatermark:(void(^)(UIImage *))beforeWatermark completion:(void(^)(UIImage *, UIImage *))completion;
 #if __has_include(<HXPhotoPicker/HXPhotoPicker.h>)
 + (void(^)(UIImage *originalImage, HXPhotoModel *videoModel))takeVideoCompletion;
 #else
@@ -178,6 +197,8 @@ extern NSString *const KMStringInitialValue;
 + (BOOL)photoCaptureByOldVersionKMCamera:(UIImage *)image;
 + (BOOL)photoDataCaptureByKMCamera:(NSData *)imageData;
 + (BOOL)photoDataCaptureByOldVersionKMCamera:(NSData *)imageData;
++ (NSString *)captureUserIDForForImage:(UIImage *)image;
++ (NSString *)captureUserIDForForImageData:(NSData *)imageData;
 + (NSDate *)photoCaptureDateForImage:(UIImage *)image;
 + (NSDate *)photoDataCaptureDateForImage:(NSData *)imageData;
 + (CLLocation *)captureLocationCoordinate2DForImage:(UIImage *)image;

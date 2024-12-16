@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic pop
 
 
-- (void)takePicture:(void(^)(BOOL success, UIImage *thumbnail))completion;
+- (void)takePictureBeforeWatermark:(void(^)(UIImage *originalImage))beforeWatermark completion:(void(^)(BOOL success, UIImage *thumbnail))completion;
 - (void)revertCameraPosition;
 @end
 
