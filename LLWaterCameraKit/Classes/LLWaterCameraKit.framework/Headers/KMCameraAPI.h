@@ -155,6 +155,7 @@ extern NSString *const KMStringInitialValue;
 #else
 + (void(^)(UIImage *originalImage, NSURL * videoURL))takeVideoCompletion;
 #endif
++ (void)shouldBeginAddWatermarkToPhoto:(void(^)(void(^)(BOOL)))takenPhoto;
 + (void)revertCameraPosition;
 //+ (void)revertCameraPositionToFront:(BOOL)isFront;
 //+ (BOOL)isFronCameraPosition;

@@ -68,6 +68,8 @@ FOUNDATION_EXTERN_INLINE id callFunc(id receiver, NSString *aSelectorName, NSArr
 + (BOOL)locationServiceAvailable;
 + (NSTimeZone *)timeZoneForCountryName:(NSString *)country;
 
++ (NSString *)infoPlistValueForKey:(NSString *)key;
+
 @end
 
 @interface UIImage (KMCameraBundle)
